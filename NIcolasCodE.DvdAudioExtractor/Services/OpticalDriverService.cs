@@ -1,8 +1,9 @@
-﻿using System.Text.RegularExpressions;
+﻿using NIcolasCodE.DvdAudioExtractor.Utilities;
+using System.Text.RegularExpressions;
 
-namespace NIcolasCodE.DvdAudioExtractor.Utilities
+namespace NIcolasCodE.DvdAudioExtractor.Services
 {
-    internal class OpticalDriverLetterRetriever
+    internal class OpticalDriverService : IOpticalDriverService
     {
         public string RetrieveOpticalDriveLetter()
         {
