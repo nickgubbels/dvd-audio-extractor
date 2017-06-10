@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace NIcolasCodE.DvdAudioExtractor.Services
 {
-    internal class OpticalDriverService : IOpticalDriverService
+    internal class OpticalDriveService : IOpticalDriveService
     {
         public string RetrieveOpticalDriveLetter()
         {

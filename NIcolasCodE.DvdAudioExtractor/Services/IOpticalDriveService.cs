@@ -1,6 +1,6 @@
 ﻿namespace NIcolasCodE.DvdAudioExtractor.Services
 {
-    internal interface IOpticalDriverService
+    internal interface IOpticalDriveService
     {
         string RetrieveOpticalDriveLetter();
     }
