@@ -14,6 +14,7 @@ namespace NIcolasCodE.DvdAudioExtractor.Utilities
                     FileName = fileName,
                     Arguments = arguments,
                     RedirectStandardOutput = true,
+                    RedirectStandardError = true,
                     UseShellExecute = false
                 }
             };
