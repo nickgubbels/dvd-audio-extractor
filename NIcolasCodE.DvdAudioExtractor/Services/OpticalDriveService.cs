@@ -5,7 +5,7 @@ namespace NIcolasCodE.DvdAudioExtractor.Services
 {
     internal class OpticalDriveService : IOpticalDriveService
     {
-        public string RetrieveOpticalDriveLetter()
+        public char? RetrieveOpticalDriveLetter()
         {
             //TODO: Use the following priority: 1) command-line argument, 2) app.config setting, 3) WMI command-line result
             return RetrieveOpticalDriveLetterUsingWindowsManagementInstrumentationCommandLine();
@@ -22,7 +22,7 @@ namespace NIcolasCodE.DvdAudioExtractor.Services
             RAMDisk = 6
         }
 
-        private static string RetrieveOpticalDriveLetterUsingWindowsManagementInstrumentationCommandLine()
+        private static char? RetrieveOpticalDriveLetterUsingWindowsManagementInstrumentationCommandLine()
         {
             var wmicResult = DoWmicCall();
 
@@ -33,9 +33,10 @@ namespace NIcolasCodE.DvdAudioExtractor.Services
                 if (match.Groups.Count == 3)
                 {
                     if (int.TryParse(match.Groups[2].Value, out int driveType)
-                        && driveType == (int)WmiDeviceTypes.CompactDisc)
+                        && driveType == (int)WmiDeviceTypes.CompactDisc
+                        && match.Groups[1].Value.Length == 1)
                     {
-                        return match.Groups[1].Value;
+                        return match.Groups[1].ToString()[0];
                     }
                 }
             }
@@ -45,8 +46,7 @@ namespace NIcolasCodE.DvdAudioExtractor.Services
 
         private static string DoWmicCall()
         {
-            var process = new ProcessWithOutput();
-            return process.ExecuteProcess("wmic.exe", "logicaldisk get deviceid, drivetype");
+            return ProcessWithOutput.ExecuteProcess("wmic.exe", "logicaldisk get deviceid, drivetype");
         }
     }
 }

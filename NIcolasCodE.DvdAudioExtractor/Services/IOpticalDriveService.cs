@@ -2,6 +2,6 @@
 {
     internal interface IOpticalDriveService
     {
-        string RetrieveOpticalDriveLetter();
+        char? RetrieveOpticalDriveLetter();
     }
 }

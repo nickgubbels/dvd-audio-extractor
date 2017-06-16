@@ -5,7 +5,7 @@ namespace NIcolasCodE.DvdAudioExtractor.Utilities
 {
     internal class ProcessWithOutput
     {
-        public string ExecuteProcess(string fileName, string arguments)
+        public static string ExecuteProcess(string fileName, string arguments)
         {
             var process = new Process()
             {

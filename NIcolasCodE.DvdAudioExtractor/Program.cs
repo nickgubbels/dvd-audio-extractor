@@ -10,10 +10,12 @@ namespace NIcolasCodE.DvdAudioExtractor
         {
             var serviceProvider = new ServiceCollection()
                 .AddScoped<IOpticalDriveService, OpticalDriveService>()
+                .AddScoped<IDvdService, DvdService>()
                 .BuildServiceProvider();
 
-            var opticalDriveLetterRetriever = serviceProvider.GetService<IOpticalDriveService>();
-            Console.WriteLine(opticalDriveLetterRetriever.RetrieveOpticalDriveLetter());
+            var dvdService = serviceProvider.GetService<IDvdService>();
+
+            var result = dvdService.RetrieveTitlesAndChapters();
 
 #if DEBUG
             Console.WriteLine("Press enter to close...");
